@@ -1,0 +1,5 @@
+package com.jsp.one.to.many.mapping;
+
+public class Employee {
+
+}

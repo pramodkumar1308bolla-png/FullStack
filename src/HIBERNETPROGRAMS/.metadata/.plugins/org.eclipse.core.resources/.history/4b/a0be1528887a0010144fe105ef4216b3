@@ -1,0 +1,37 @@
+package com.jsp.Servicelayer;
+
+import java.util.List;
+
+import com.jsp.DAO.EmployeeDAO;
+import com.jsp.Employee.Employee1;
+
+
+public class EmployeeService {
+	private EmployeeDAO dao = new EmployeeDAO();
+
+	public void addEmployee(String name, String department, double salary) {
+		dao.save(new Employee1(name, department, salary));
+	}
+
+	public Employee1 getEmployee(int id) {
+		return dao.findById(id);
+	}
+
+	public List<Employee1> getAllEmployees() {
+		return dao.findAll();
+	}
+
+	public void updateEmployee(int id, String name, String department, double salary) {
+		Employee1 emp = dao.findById(id);
+		if (emp != null) {
+			emp.setName(name);
+			emp.setDepartment(department);
+			emp.setSalary(salary);
+			dao.update(emp);
+		}
+	}
+
+	public void deleteEmployee(int id) {
+		dao.delete(id);
+	}
+}

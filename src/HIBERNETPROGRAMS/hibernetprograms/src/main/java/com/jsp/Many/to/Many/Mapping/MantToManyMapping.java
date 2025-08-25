@@ -1,0 +1,49 @@
+package com.jsp.Many.to.Many.Mapping;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class MantToManyMapping {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		Session session = factory.openSession();
+		Product p1=new Product();
+		p1.setName("Laptop");
+		p1.setPrice(43200.00);
+		
+		Product p2=new Product();
+		p2.setName("Mouse");
+		p2.setPrice(500.00);
+		
+		Orders o1=new Orders();
+		o1.setCustomerName("Ankur");
+		
+		Orders o2=new Orders();
+		o2.setCustomerName("Somi");
+		
+		
+		o1.getProduct().add(p1);
+		o1.getProduct().add(p1);
+		o2.getProduct().add(p2);
+		
+		
+		p1.getOrder().add(o1);
+		p1.getOrder().add(o2);
+		p2.getOrder().add(o1);
+		
+		
+		session.beginTransaction();
+		session.save(p1);
+		session.save(p2);
+		session.save(o1);
+		session.save(o2);
+		session.getTransaction().commit();
+		session.close();
+		factory.close();
+		System.out.println("Stops.......");
+
+	}
+}

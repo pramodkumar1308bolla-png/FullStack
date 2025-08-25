@@ -1,0 +1,69 @@
+package com.jsp.Entity;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "course")
+public class Course {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	private String title;
+
+	private int duration; // in hours or weeks
+
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<>();
+
+	public Course() {
+	}
+
+	public Course(String title, int duration) {
+		this.title = title;
+		this.duration = duration;
+	}
+
+	// Getters & Setters
+	public int getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	@Override
+	public String toString() {
+		return "Course{id=" + id + ", title='" + title + "', duration=" + duration + "}";
+	}
+}

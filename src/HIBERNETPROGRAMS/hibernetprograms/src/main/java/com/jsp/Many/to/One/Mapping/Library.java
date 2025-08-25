@@ -1,0 +1,45 @@
+package com.jsp.Many.to.One.Mapping;
+
+import java.util.List;
+import javax.persistence.*;
+
+@Entity
+public class Library {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    
+    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL)
+    private List<Books> books;
+    
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public List<Books> getBooks() {
+        return books;
+    }
+    public void setBooks(List<Books> books) {
+        this.books = books;
+    }
+
+    public Library() {}
+    public Library(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Library [id=" + id + ", name=" + name + "]";
+    }
+}

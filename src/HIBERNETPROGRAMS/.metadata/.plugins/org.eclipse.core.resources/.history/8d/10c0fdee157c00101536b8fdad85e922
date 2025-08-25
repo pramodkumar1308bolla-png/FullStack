@@ -1,0 +1,62 @@
+package com.jsp.Entity;
+
+
+import jakarta.persistence.*;
+import java.util.*;
+
+@Entity
+@Table(name = "courses")
+public class Courses {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	private String title;
+
+	private int duration; // in hours or weeks
+
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<>();
+
+	public Courses() {
+	}
+
+	public Courses(String title, int duration) {
+		this.title = title;
+		this.duration = duration;
+	}
+
+	// Getters & Setters
+	public int getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	@Override
+	public String toString() {
+		return "Course{id=" + id + ", title='" + title + "', duration=" + duration + "}";
+	}
+}

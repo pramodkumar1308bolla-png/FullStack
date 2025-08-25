@@ -1,0 +1,53 @@
+package com.jsp.DAO;
+import java.util.List;
+
+import com.jsp.Employee.Employee1;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class EmployeeDAO {
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeePU");
+
+	public void save(Employee1 emp) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(emp);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public Employee1 findById(int id) {
+		EntityManager em = emf.createEntityManager();
+		Employee1 emp = em.find(Employee1.class, id);
+		em.close();
+		return emp;
+	}
+
+	public List<Employee1> findAll() {
+		EntityManager em = emf.createEntityManager();
+		List<Employee1> list = em.createQuery("FROM Employee", Employee1.class).getResultList();
+		em.close();
+		return list;
+	}
+
+	public void update(Employee1 emp) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(emp);
+		em.getTransaction().commit();
+		em.close();
+	}
+
+	public void delete(int id) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Employee1 emp = em.find(Employee1.class, id);
+		if (emp != null) {
+			em.remove(emp);
+		}
+		em.getTransaction().commit();
+		em.close();
+	}
+}

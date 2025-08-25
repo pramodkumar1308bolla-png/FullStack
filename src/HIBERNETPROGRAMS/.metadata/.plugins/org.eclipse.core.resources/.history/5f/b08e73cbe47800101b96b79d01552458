@@ -1,0 +1,18 @@
+package com.jsp.OnetoOneDAO;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class PersonDAO {
+	
+	
+	
+	private SessionFactory sessionFactory;
+	
+	public PersonDAO() {
+		sessionFactory=new Configuration().configure().buildSessionFactory();
+	}
+	
+	
+
+}

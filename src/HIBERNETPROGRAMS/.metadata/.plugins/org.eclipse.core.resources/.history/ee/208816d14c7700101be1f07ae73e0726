@@ -1,0 +1,36 @@
+package com.jsp.Many.to.One.Mapping;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import java.util.Arrays;
+
+public class ManyToOneMapping {
+    public static void main(String[] args) {
+        
+        Configuration cfg = new Configuration();
+        cfg.configure();
+        SessionFactory factory = cfg.buildSessionFactory();
+
+        Library library1 = new Library();
+        library1.setName("City Library");
+
+        
+        Books book1 = new Books();
+        book1.setTitle("The Great Gatsby");
+        book1.setLibrary(library1); 
+
+        Books book2 = new Books();
+        book2.setTitle("Moby Dick");
+        book2.setLibrary(library1); 
+        library1.setBooks(Arrays.asList(book1, book2));
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(library1);
+        session.getTransaction().commit();
+        session.close();
+        factory.close();
+    }
+}
+

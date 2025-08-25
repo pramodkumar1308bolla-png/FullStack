@@ -1,0 +1,34 @@
+package com.jsp.Entityies;
+
+import javax.persistence.*;
+
+@Entity
+public class Passport {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Passport_Id")
+	private int passportId;
+	private int numberOfCountriesElibile;
+	private String passportType;
+	public Passport(int passportId, int numberOfCountriesElibile, String passportType) {
+		super();
+		this.passportId = passportId;
+		this.numberOfCountriesElibile = numberOfCountriesElibile;
+		this.passportType = passportType;
+	}
+	public int getPassportId() {
+		return passportId;
+	}
+	public int getNumberOfCountriesElibile() {
+		return numberOfCountriesElibile;
+	}
+	public void setNumberOfCountriesElibile(int numberOfCountriesElibile) {
+		this.numberOfCountriesElibile = numberOfCountriesElibile;
+	}
+	public String getPassportType() {
+		return passportType;
+	}
+	public void setPassportType(String passportType) {
+		this.passportType = passportType;
+	}
+}
