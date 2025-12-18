@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	id="WebApp_ID" version="6.0">
+	<display-name>First-Webapp-1</display-name>
+
+	<servlet>
+		<servlet-name>Exp2</servlet-name>
+		<servlet-class>com.Example2</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Exp2</servlet-name>
+		<url-pattern>/first</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Serv2</servlet-name>
+		<servlet-class>com.Servlet1</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Serv2</servlet-name>
+		<url-pattern>/second</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Serv3</servlet-name>
+		<servlet-class>com.Servlet3</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Serv3</servlet-name>
+		<url-pattern>/third</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Serv4</servlet-name>
+		<servlet-class>com.Servlet4</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Serv4</servlet-name>
+		<url-pattern>/four</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+</web-app>
